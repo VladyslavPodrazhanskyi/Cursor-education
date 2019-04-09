@@ -32,7 +32,7 @@ def is_two_objects_is_the_same_objects(first: Any, second: Any) -> bool:
     If @first and @second has same type should return True
     In another case should return False
     """
-    return id(first) == id(second)
+    return first is second
 
 
 def multiple_ints(first_value: int, second_value: int) -> int:
@@ -49,10 +49,12 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     Returns:
         Product of elements
     """
-    if type(first_value) != int or type(second_value) != int:
-        raise ValueError
-    else:
+     if isinstance(first_value, int) and isinstance(second_value, int):
         return first_value*second_value
+    else:
+        raise ValueError
+ 
+        
 
 
 def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
