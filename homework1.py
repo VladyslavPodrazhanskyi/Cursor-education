@@ -50,11 +50,8 @@ def multiple_ints(first_value: int, second_value: int) -> int:
         Product of elements
     """
      if isinstance(first_value, int) and isinstance(second_value, int):
-        return first_value*second_value
-    else:
-        raise ValueError
- 
-        
+            return first_value*second_value
+     raise ValueError       
 
 
 def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
@@ -86,9 +83,9 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
     """
     try:
         return int(first_value)*int(second_value)
-    except OurAwesomeException:
+    except ValueError:
         print("Not valid input data")
-
+        
 
 def is_word_in_text(word: str, text: str) -> bool:
     """
@@ -113,11 +110,8 @@ def some_loop_exercise() -> list:
     """
     Use loop to create list that contain int values from 0 to 12 except 6 and 7
     """
-    list_1 = []
-    for i in range(13):
-        if i != 6 and i != 7:
-            list_1.append(i)
-    return list_1
+    l = [i for i in range(13) if i not in {6, 7}]
+    return l
 
 def remove_from_list_all_negative_numbers(data: List[int]) -> list:
     """
@@ -128,10 +122,7 @@ def remove_from_list_all_negative_numbers(data: List[int]) -> list:
         remove_from_list_all_negative_numbers([1, 5, -7, 8, -1])
         >>> [1, 5, 8]
     """
-    positive_data = []
-    for number in data:
-        if number >= 0:
-            positive_data.append(number)
+    positive_data = [n for n in data if n >= 0]
     return positive_data
 
 
@@ -156,13 +147,12 @@ def simple_sort(data: List[int]) -> List[list]:
     Returns:
 
     """
-    if len(data) < 2:
-        return data
-    else:
-        current = data[0]
-        less = [i for i in data[1:] if i <= current]
-        greater = [i for i in data[1:] if i > current]
-        return simple_sort(less) + [current] + simple_sort(greater)
+    for i in range(len(data)):
+        for j in range(i+1, len(data)):
+            if data[j] < data[i]:
+                data[i], data[j] = data[j], data[i]
+    return data
+                
 
 
 
