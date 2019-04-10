@@ -85,6 +85,9 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
         return int(first_value)*int(second_value)
     except ValueError:
         print("Not valid input data")
+    except Exception:
+        raise OurAwesomeException
+        
         
 
 def is_word_in_text(word: str, text: str) -> bool:
